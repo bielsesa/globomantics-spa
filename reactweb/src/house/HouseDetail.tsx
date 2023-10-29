@@ -3,17 +3,19 @@ import { useDeleteHouse, useFetchHouse } from '../hooks/houseHooks';
 import ApiStatus from '../ApiStatus';
 import { currencyFormatter } from '../config';
 import defaultPhoto from './defaultPhoto';
+import Bids from '../bids/Bids';
 
 const HouseDetail = () => {
     const { id } = useParams();
-
-    if (!id) throw Error('House Id not found.');
+    if (!id) throw Error('House id not found');
     const houseId = parseInt(id);
 
     const { data, status, isSuccess } = useFetchHouse(houseId);
+
     const deleteHouseMutation = useDeleteHouse();
 
     if (!isSuccess) return <ApiStatus status={status} />;
+
     if (!data) return <div>House not found.</div>;
 
     return (
@@ -63,6 +65,7 @@ const HouseDetail = () => {
                 <div className='row'>
                     <div className='col-12 mt-3'>{data.description}</div>
                 </div>
+                <Bids house={data} />
             </div>
         </div>
     );

@@ -7,6 +7,7 @@ public class HouseDbContext : DbContext
 
     //// the DbSet represents the Db table itself, which will have all the columns defined in the entity
     public DbSet<HouseEntity> Houses => Set<HouseEntity>(); //// the set method creates an empty DbSet
+    public DbSet<BidEntity> Bids => Set<BidEntity>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
