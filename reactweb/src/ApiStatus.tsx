@@ -13,7 +13,7 @@ const ApiStatus = ({ status }: Args) => {
         case 'loading':
             return (
                 <div>
-                    <img src={loading} />
+                    <img src={loading} alt='loading  gif' />
                     <p>Loading...</p>
                 </div>
             );
